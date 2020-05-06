@@ -162,6 +162,46 @@ get detailed information about each type in this step.
   ```
  * Examine the response received:  `BusinessObjectsCursor` is an OBJECT type, which implements INTERFACE `Cursor`. It has three fields defined, `edges`, `pageInfo`, and `totalCount`. Field `edges` is a LIST of OBJECT `BusinessObjectEdge`, etc.  Knowing the INTERFACE can help to streamline queries with different OBJECT types in the responses.  
   ![type response](query-type-response.jpg)
- * Replace the type name in the query with some other types you picked in Step #2 or #3, and run the query again, and check the responses to understand the type definition.
+ * Replace the type name in the query with some other types you picked in Step #2 or #3, and run the query again, and check the responses to understand the type definitions.
  
- 
+5. __Types associated with an interface__. Although the query shown in Step #4 can be used for any type, one may prefer simpler responses for specific types, such as INTERFACE or ENUM. In this step we will show how to get a clean list of OBJECTS which implement a given INTERFACE. From GraphQL API client perspective, knowing the INTERFACE an OBJECT implements can help to streamline query responses. 
+  * In previous step, we saw an OBJECT which implements INTERFACE “Cursor”. Use the following query to find out all OBJECTS which implements the same INTERFACE.
+  ```
+query {
+  __type(name: "Cursor") {
+    name
+    kind
+    description
+    possibleTypes {
+      name
+      kind
+      description
+    }
+  }
+}  
+  ```
+  * The response shows all the Cursor OBJECTS defined in InfoHub.
+  ![interface query response](interface-query-response.jpg)
+  * Pick another interface you identified in Step #2 or Step #3, put it into the query and run it to find all associated OBJECTs.
+  
+6. __ENUM values__.  InfoHub uses numerous ENUMs in the schema. An ENUM type simply defines a set of discrete values, such as InfoHub ENUM type `BusinessObjectType` provides a list of all business objects defined in the schema. This step shows a simply query to get the value list of an ENUM.
+
+  * Copy and paste the following query into the tool of your choice, and run the query.
+  ```
+query {
+  __type(name: "BusinessObjectType") {
+    name
+    kind
+    description
+    enumValues {
+      name
+      description
+    }
+  }
+}
+  ```
+  * Check the result to see all object types listed under ENUM `BusinessObjectType`.  This list will give you an idea what business data objects are supported in the API.
+  ![ENUM query response](enum-query-response.jpg)
+  * Replace the type with another ENUM type picked in Step #2 or Step #3, and re-run the query to see the value list for that ENUM.
+  
+  
