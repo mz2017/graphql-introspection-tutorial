@@ -1,20 +1,20 @@
-# SCI Custom Advisor For Lenovo Fast Start Project (EBA version)
+# Tutorial GraphQL Schema Introspection 101 
 
-This project was created using custom-advisor-base of July 16, 2018.
+This tutorial was first published on May 5, 2020.
 
-## Steps to deploy this project in IBM Cloud for a SCI tenant
+## Tutorial Overview
 
-1. Create a SQL database schema for log messages. Pre-seed necessary data. Related SQL can be found in file: `src/main/resources/db_schema_mysql.sql`.
-2. Create a new Watson Assistant (Watson Conversation Service) instance for the advisor [Optional, can share with other instances if needed]. The latest WCS model was exported to file: `src/main/resources/WCS-Lenovo-FS-20180924.json`.
-3. Acquire necessary credentials to be used for SCI, services, etc., such as SCI API credentials, database credentials, Watson service credentials, etc.
-4. Create required custom data objects (such as WorkOrderTask, ProcessSal, etc.). Refer to the [Lenovo SDK project](https://git.ng.bluemix.net/sci-services/customers/sci-sdk-1.1.0-lenovo) for more details.
-5. Update related service credentials in config.yml file (or use the version specific for the environment)
-6. Build the project with right AppName for the deployment
-7. Deploy the new build to IBM Cloud
-8. Load required core object files through UI
-9. Load custom object data through data upload utility. A reference mapping file is provided here: `src/main/resources/upload-mapping.xml`, and all data files used for development are stored in [box folder](https://ibm.ent.box.com/folder/53002256729).
-10. Test custom advisor questions
+GraphQL is a query language based on a type system. GraphQL types define what objects are supported, what fields are associated with an object, and what can be queried and how, all defined by the GraphQL schema. To be able to use GraphQL APIs effectively, it is essential to have a good understanding of the InfoHub schema. 
 
-## Distribution
+Although the InfoHub GraphQL schema can be accessed through the [GitHub repo](https://github.ibm.com/SC-Shared-Services/infohub-graphql-server-base/blob/master/src/main/resources/schema.graphqls), there is another way to get information on the schema from the live system: using GraphQL Introspection. Schema introspection can be a very handy tool whenever you have a question about any part of the schema, such as what objects are defined, what fields are associated with a type, what are the values of an enumeration, what kind of queries are supported, and what parameters can be used for a query, etc.
 
-This utility is intended for IBM Watson Supply Chain Insight (WSCI) Lab service team internal use only. Do not share with external parties without getting permission from the WSCI Lab team first.
+## What you will learn
+
+At the end of this tutorial, you will learn:
+
+..* How to find all the supported types (objects, interfaces, enum, etc.)
+..* How to find more details of each type (such as fields for an object, or values of an enum)
+..* What queries are supported, and query details (such as parameters)
+..* What mutations are supported
+..* How to construct a GraphQL query based on introspection results
+
