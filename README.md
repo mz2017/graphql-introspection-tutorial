@@ -28,9 +28,26 @@ At the end of this tutorial, you will learn:
 
 1. Complete all pre-reqs and logon to the P2PaaS Rex VPN.
 2. Introspect all types defined in the schema in GraphQL visual editor
-  * Navigate to the GraphiQL visual editor by entering the following URL in a browser:
+   * Navigate to the GraphiQL visual editor by entering the following URL in a browser:
   ```
   https://data.infohub.shared-services-fra.np.wce.ibm.com/
   ```
-  * Paste the following GraphQL query into the left side of the editor, and click the run button on the top left side of the editor. 
+   * Paste the following GraphQL query into the left side of the editor, and click the run button on the top left side of the editor. 
+  ```
+  query {
+    __schema {
+		types {
+		  name
+		  description
+		  kind
+		}
+		queryType {
+		  fields {
+			name
+			description
+		  }
+		}
+	  }
+	}
+  ```
 3. Run the same GraphQL schema query in Postman.
