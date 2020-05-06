@@ -27,13 +27,14 @@ At the end of this tutorial, you will learn:
 ## Steps
 
 1. Complete all pre-reqs and logon to the P2PaaS Rex VPN.
+
 2. Introspect all types defined in the schema in GraphQL visual editor
   * Navigate to the GraphiQL visual editor by entering the following URL in a browser:
   ```
   https://data.infohub.shared-services-fra.np.wce.ibm.com/
   ```
    * Paste the following GraphQL query into the left side of the editor, and click the run button on the top left side of the editor. 
-  ```
+    ```
   query {
     __schema {
 	    types {
@@ -49,8 +50,23 @@ At the end of this tutorial, you will learn:
 		}
       }
     }
-  ```
+   ```
   * Once the query is completed, you will see the query response on the right side of the editor. Look through the response, and find some examples of OBJECT, INTERFACE, and ENUM. OBJECT types are the bread and butter of GraphQL APIs. Each OBJECT has fields which expose data and maybe queried by name. INTERFACEs are list of fields which may be implemented by OBJECT types. ENUM types are sets of discrete values. We will use some of them in later exercises. 
   ![schema-response](schema-response.jpg)
-  
+  * Navigate to the botton of the response, and check out the list of queries supported. We will do more query introspection in a later step.
+  * In GraphiQL editor, one can also use the <Docs> link on the top right corner to inspect the schema definition. 
+
 3. Run the same GraphQL schema query in Postman.
+  * Open Postman, start a new request, name it `Get InfoHub schema info`.
+  * Select POST from the drop down, and enter the following into the URL box: 
+  ```
+  https://data.infohub.shared-services-fra.np.wce.ibm.com/
+  ```
+  * In the request body section, select `GraphQL`, and copy and paste the same query from previous step into the QUERY box: 
+   ![postman request](postman-graphql-request.jpg)
+  * Disable SSL certificate verification in Postman (you only need to do this once): 
+   ![postman security](postman-security-setting.jpg)
+  * Click Send, and you should see the response in the Response section below the request: 
+    ![postman response](postman-send-response.jpg)
+    The response should be identical to the one received in previous step. Some of the benefits of doing the query in Postman are that the request can be saved, reused, cloned, and shared with others. For the remaining steps, feel free to choose either GraphiQL editor or Postman.
+   
