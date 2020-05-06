@@ -52,7 +52,7 @@ At the end of this tutorial, you will learn:
     }
    ```
   * Once the query is completed, you will see the query response on the right side of the editor. Look through the response, and find some examples of OBJECT, INTERFACE, and ENUM. OBJECT types are the bread and butter of GraphQL APIs. Each OBJECT has fields which expose data and maybe queried by name. INTERFACEs are list of fields which may be implemented by OBJECT types. ENUM types are sets of discrete values. We will use some of them in later exercises. 
-  ![schema-response](schema-response.jpg)
+  ![schema-response](images/schema-response.jpg)
   * Navigate to the botton of the response, and check out the list of queries supported. We will do more query introspection in a later step.
   * In GraphiQL editor, one can also use the <Docs> link on the top right corner to inspect the schema definition. 
 
@@ -63,11 +63,11 @@ At the end of this tutorial, you will learn:
   https://data.infohub.shared-services-fra.np.wce.ibm.com/
   ```
   * In the request body section, select `GraphQL`, and copy and paste the same query from previous step into the QUERY box: 
-   ![postman request](postman-graphql-request.jpg)
+   ![postman request](images/postman-graphql-request.jpg)
   * Disable SSL certificate verification in Postman (you only need to do this once): 
-   ![postman security](postman-security-setting.jpg)
+   ![postman security](images/postman-security-setting.jpg)
   * Click Send, and you should see the response in the Response section below the request: 
-    ![postman response](postman-send-response.jpg)
+    ![postman response](images/postman-send-response.jpg)
     The response should be identical to the one received in previous step. Some of the benefits of doing the query in Postman are that the request can be saved, reused, cloned, and shared with others. For the remaining steps, feel free to choose either GraphiQL editor or Postman.
    
 4. __Introspection of type details__. In previous two steps, we learned how to find all types defined in the schema, but the query provided us very little information about each type. For example, we still don’t know what fields are defined for any object. We will learn how to 
@@ -161,7 +161,7 @@ get detailed information about each type in this step.
 
   ```
  * Examine the response received:  `BusinessObjectsCursor` is an OBJECT type, which implements INTERFACE `Cursor`. It has three fields defined, `edges`, `pageInfo`, and `totalCount`. Field `edges` is a LIST of OBJECT `BusinessObjectEdge`, etc.  Knowing the INTERFACE can help to streamline queries with different OBJECT types in the responses.  
-  ![type response](query-type-response.jpg)
+  ![type response](images/query-type-response.jpg)
  * Replace the type name in the query with some other types you picked in Step #2 or #3, and run the query again, and check the responses to understand the type definitions.
  
 5. __Types associated with an interface__. Although the query shown in Step #4 can be used for any type, one may prefer simpler responses for specific types, such as INTERFACE or ENUM. In this step we will show how to get a clean list of OBJECTS which implement a given INTERFACE. From GraphQL API client perspective, knowing the INTERFACE an OBJECT implements can help to streamline query responses. 
@@ -181,7 +181,7 @@ query {
 }  
   ```
   * The response shows all the Cursor OBJECTS defined in InfoHub.
-  ![interface query response](interface-query-response.jpg)
+  ![interface query response](images/interface-query-response.jpg)
   * Pick another interface you identified in Step #2 or Step #3, put it into the query and run it to find all associated OBJECTs.
   
 6. __ENUM values__.  InfoHub uses numerous ENUMs in the schema. An ENUM type simply defines a set of discrete values, such as InfoHub ENUM type `BusinessObjectType` provides a list of all business objects defined in the schema. This step shows a simply query to get the value list of an ENUM.
@@ -201,7 +201,7 @@ query {
 }
   ```
   * Check the result to see all object types listed under ENUM `BusinessObjectType`.  This list will give you an idea what business data objects are supported in the API.
-  ![ENUM query response](enum-query-response.jpg)
+  ![ENUM query response](images/enum-query-response.jpg)
   * Replace the type with another ENUM type picked in Step #2 or Step #3, and re-run the query to see the value list for that ENUM.
   
 7. __Query definitions__. All GraphQL queries supported are defined in a special type `Query` in the schema. You can use the query defined in Step #4 to get the related information. Here we will provide a cleaner version specific for type `Query`.
@@ -233,7 +233,7 @@ query {
 	}
   ```
   * Examine the response. Each supported query is shown as a field in the response. There are currently a total of 4 queries defined in the schema. One of the queries is `businessObjectEvents` which returns a `BusinessEventCursor`.  This query can take 5 different parameters, one of which is `advancedFilter` of OBJECT type `BooleanExp`, etc.
-  ![query def response](query-def-response.jpg)
+  ![query def response](images/query-def-response.jpg)
  
 8. __Mutation definitions__. Mutation is another schema type which defines all mutations supported by the API. Unlike GraphQL query APIs which are used for data fetching, GraphQL mutation APIs are provided to modify data on the server. Replace `Query` with `Mutation` in the above query (Step #7), and check out all InforHub mutation definitions, i.e. what kind of data manipulations are supported through the InfoHub GraphQL API.
 
