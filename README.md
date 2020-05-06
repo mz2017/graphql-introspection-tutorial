@@ -28,7 +28,7 @@ At the end of this tutorial, you will learn:
 
 1. Complete all pre-reqs and logon to the P2PaaS Rex VPN.
 2. Introspect all types defined in the schema in GraphQL visual editor
-   * Navigate to the GraphiQL visual editor by entering the following URL in a browser:
+  * Navigate to the GraphiQL visual editor by entering the following URL in a browser:
   ```
   https://data.infohub.shared-services-fra.np.wce.ibm.com/
   ```
@@ -36,7 +36,7 @@ At the end of this tutorial, you will learn:
   ```
   query {
     __schema {
-		types {
+	    types {
 		  name
 		  description
 		  kind
@@ -47,7 +47,10 @@ At the end of this tutorial, you will learn:
 			description
 		  }
 		}
-	  }
-	}
+      }
+    }
   ```
+  * Once the query is completed, you will see the query response on the right side of the editor. Look through the response, and find some examples of OBJECT, INTERFACE, and ENUM. OBJECT types are the bread and butter of GraphQL APIs. Each OBJECT has fields which expose data and maybe queried by name. INTERFACEs are list of fields which may be implemented by OBJECT types. ENUM types are sets of discrete values. We will use some of them in later exercises. 
+  ![schema-response](schema-response.jpg)
+  
 3. Run the same GraphQL schema query in Postman.
