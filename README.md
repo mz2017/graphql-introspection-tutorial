@@ -24,3 +24,10 @@ At the end of this tutorial, you will learn:
 * Currently, you must be on the [P2PaaS Rex VPN](https://w3-connections.ibm.com/wikis/home?lang=en#!/wiki/W0c5faf15eabc_42d9_b877_4c8edce9bb37/page/IBM%20Sterling%20REX%20VPN) to access some of the APIs listed below. (Some of these APIs will likely have public APIs at a later date)
 * It is recommended to have HTTP tool such as [Postman](https://learning.postman.com/docs/postman/launching-postman/installation-and-updates/) installed, so you can save the work you do in this tutorial, and reuse them later to help with other tutorials.
 
+## Steps
+
+1. Complete all pre-reqs and logon to the P2PaaS Rex VPN.
+2. Introspect all types defined in the schema in GraphQL visual editor
+  2.1 Navigate to the GraphiQL visual editor by entering the following URL in a browser:
+  2.2 Paste the following GraphQL query into the left side of the editor, and click the run button on the top left side of the editor. 
+3. Run the same GraphQL schema query in Postman.
