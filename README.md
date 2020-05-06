@@ -34,7 +34,7 @@ At the end of this tutorial, you will learn:
   https://data.infohub.shared-services-fra.np.wce.ibm.com/
   ```
    * Paste the following GraphQL query into the left side of the editor, and click the run button on the top left side of the editor. 
-    ```
+   ```
   query {
     __schema {
 	    types {
