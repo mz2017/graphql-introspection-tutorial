@@ -12,9 +12,15 @@ Although the InfoHub GraphQL schema can be accessed through the [GitHub repo](ht
 
 At the end of this tutorial, you will learn:
 
-..* How to find all the supported types (objects, interfaces, enum, etc.)
-..* How to find more details of each type (such as fields for an object, or values of an enum)
-..* What queries are supported, and query details (such as parameters)
-..* What mutations are supported
-..* How to construct a GraphQL query based on introspection results
+* How to find all the supported types (objects, interfaces, enum, etc.)
+* How to find more details of each type (such as fields for an object, or values of an enum)
+* What queries are supported, and query details (such as parameters)
+* What mutations are supported
+* How to construct a GraphQL query based on introspection results
+
+## Pre-reqs
+
+* If you are new to GraphQL, please complete the [graphql.com tutorial](https://www.graphql.com/tutorials/) until you feel comfortable with GraphQL API basics.
+* Currently, you must be on the [P2PaaS Rex VPN](https://w3-connections.ibm.com/wikis/home?lang=en#!/wiki/W0c5faf15eabc_42d9_b877_4c8edce9bb37/page/IBM%20Sterling%20REX%20VPN) to access some of the APIs listed below. (Some of these APIs will likely have public APIs at a later date)
+* It is recommended to have HTTP tool such as [Postman](https://learning.postman.com/docs/postman/launching-postman/installation-and-updates/) installed, so you can save the work you do in this tutorial, and reuse them later to help with other tutorials.
 
