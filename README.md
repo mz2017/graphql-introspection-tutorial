@@ -204,4 +204,42 @@ query {
   ![ENUM query response](enum-query-response.jpg)
   * Replace the type with another ENUM type picked in Step #2 or Step #3, and re-run the query to see the value list for that ENUM.
   
+7. __Query definitions__. All GraphQL queries supported are defined in a special type `Query` in the schema. You can use the query defined in Step #4 to get the related information. Here we will provide a cleaner version specific for type `Query`.
+  * Run the following GraphQL query in your tool:
+  ```
+	query {
+	  __type(name: "Query") {
+		...QueryType
+	  }
+	}
+
+	fragment QueryType on __Type {
+	  fields {
+		name
+		description
+		type {
+			name
+			kind
+		}
+		args {
+		  name
+		  description
+		  type {
+			  name
+			  kind
+		  }
+		}
+	  }
+	}
+  ```
+  * Examine the response. Each supported query is shown as a field in the response. There are currently a total of 4 queries defined in the schema. One of the queries is `businessObjectEvents` which returns a `BusinessEventCursor`.  This query can take 5 different parameters, one of which is `advancedFilter` of OBJECT type `BooleanExp`, etc.
+  ![query def response](query-def-response.jpg)
+ 
+8. __Mutation definitions__. Mutation is another schema type which defines all mutations supported by the API. Unlike GraphQL query APIs which are used for data fetching, GraphQL mutation APIs are provided to modify data on the server. Replace `Query` with `Mutation` in the above query (Step #7), and check out all InforHub mutation definitions, i.e. what kind of data manipulations are supported through the InfoHub GraphQL API.
+
+9. __Putting all together__. By now we have learned how to find all types supported, and how to find the details of each type. Sample queries were provided for INTERFACE, ENUM, Query, Mutation. These should provide you sufficient resources to get started on constructing your very first InfoHub GraphQL query. 
+  * Use query in Step #7 to find the definition of a query for `businessRuleEvents`.
+  * Use query in Step #4 to find out the details of the response type.
+  * Use query in Step #4 to find out the details of each query parameter.
+  * Based on the results of the above steps, construct a GraphQL query for `businessRuleEvents`. Don’t worry if your query does not run, as you may need additional information to get it work. But this exercise will get you prepared for [Tutorial Query 101](https://github.ibm.com/SC-Shared-Services/planning/wiki/Tutorial-Query-101).
   
