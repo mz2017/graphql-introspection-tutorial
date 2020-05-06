@@ -160,5 +160,8 @@ get detailed information about each type in this step.
 	}
 
   ```
-  * Examine the response received:  `BusinessObjectsCursor` is an OBJECT type, which implements INTERFACE `Cursor`. It has three fields defined, `edges`, `pageInfo`, and `totalCount`. Field `edges` is a LIST of OBJECT `BusinessObjectEdge`, etc.  Knowing the INTERFACE can help to streamline queries with different OBJECT types in the responses.  
-  
+ * Examine the response received:  `BusinessObjectsCursor` is an OBJECT type, which implements INTERFACE `Cursor`. It has three fields defined, `edges`, `pageInfo`, and `totalCount`. Field `edges` is a LIST of OBJECT `BusinessObjectEdge`, etc.  Knowing the INTERFACE can help to streamline queries with different OBJECT types in the responses.  
+  ![type response](query-type-response.jpg)
+ * Replace the type name in the query with some other types you picked in Step #2 or #3, and run the query again, and check the responses to understand the type definition.
+ 
+ 
