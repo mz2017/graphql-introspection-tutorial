@@ -70,3 +70,95 @@ At the end of this tutorial, you will learn:
     ![postman response](postman-send-response.jpg)
     The response should be identical to the one received in previous step. Some of the benefits of doing the query in Postman are that the request can be saved, reused, cloned, and shared with others. For the remaining steps, feel free to choose either GraphiQL editor or Postman.
    
+4. __Introspection of type details__. In previous two steps, we learned how to find all types defined in the schema, but the query provided us very little information about each type. For example, we still don’t know what fields are defined for any object. We will learn how to 
+get detailed information about each type in this step.
+  * Enter the following query into the tool of your choice: 
+  ```
+    query {
+	  __type(name: "BusinessObjectsCursor") {
+		...FullType
+	  }
+	}
+
+	fragment FullType on __Type {
+	  kind
+	  name
+	  description
+	  fields(includeDeprecated: true) {
+		name
+		description
+		args {
+		  ...InputValue
+		}
+		type {
+		  ...TypeRef
+		}
+		isDeprecated
+		deprecationReason
+	  }
+
+	  inputFields {
+		...InputValue
+	  }
+
+	  interfaces {
+		...TypeRef
+	  }
+
+	  enumValues(includeDeprecated: true) {
+		name
+		description
+		isDeprecated
+		deprecationReason
+	  }
+
+	  possibleTypes {
+		...TypeRef
+	  }
+	}
+
+	fragment InputValue on __InputValue {
+	  name
+	  description
+	  type {
+		...TypeRef
+	  }
+	  defaultValue
+	}
+
+	fragment TypeRef on __Type {
+	  kind
+	  name
+	  ofType {
+		kind
+		name
+		ofType {
+		  kind
+		  name
+		  ofType {
+			kind
+			name
+			ofType {
+			  kind
+			  name
+			  ofType {
+				kind
+				name
+				ofType {
+				  kind
+				  name
+				  ofType {
+					kind
+					name
+				  }
+				}
+			  }
+			}
+		  }
+		}
+	  }
+	}
+
+  ```
+  * Examine the response received:  `BusinessObjectsCursor` is an OBJECT type, which implements INTERFACE `Cursor`. It has three fields defined, `edges`, `pageInfo`, and `totalCount`. Field `edges` is a LIST of OBJECT `BusinessObjectEdge`, etc.  Knowing the INTERFACE can help to streamline queries with different OBJECT types in the responses.  
+  
